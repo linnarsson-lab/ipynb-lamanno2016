@@ -50,7 +50,7 @@ if __name__ == '__main__':
         # Bayesian Negative Binomial regression for single-cell RNA-seq
 
         data {
-        int<lower=0> N;                 # number of outcomes
+            int<lower=0> N;                 # number of outcomes
             int<lower=0> K;                 # number of predictors
             matrix<lower=0>[N,K] x;         # predictor matrix 
             int y[N];                       # outcomes
@@ -62,8 +62,8 @@ if __name__ == '__main__':
         }
 
         model {	
-            vector<lower=0.001>[N] mu;
-            vector<lower=1.001>[N] rv;
+            vector[N] mu;
+            vector[N] rv;
 
             # priors
             r ~ cauchy(0, 1);
