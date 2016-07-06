@@ -154,4 +154,70 @@ class CEF_obj(object):
 				fout.write(u'\n')
 
 
+def cef2df(filepath, index_ix=0, columns_ix=0):
+	'''Reads a cef file and returns a `data`, a `rows_annotations` and a `col_annotations` pandas dataframes.
+		
+	Inputs
+	------
+
+		filename: str 
+
+	Returns
+	-------
+		dataset: pandas.Dataframe
+			Dataframe containing the data (cef.matrix)
+			`indexes`  will be cef. row_attr_values[index_ix] and `columns` cef.col_attr_values[columns_ix]
+		
+		rows_annotations: pandas.Dataframe
+			A pandas.Dataframe containing all the annotations for the rows (genes)
+
+		cols_annotations: pandas.Dataframe
+			A pandas.Dataframe containing all the annotations for the columns (cells)
+
+		headers: dict
+			a dictionary key (header name) : value (header text)
+
+	'''
+	try:	
+		import pandas as pd
+	except:
+		print 'To run simple_cef3df you need to have pandas installed. This can be achieve by doing: pip install pandas'
+		return None
+
+	cef = CEF_obj()
+	cef.readCEF(filepath)
+	df = pd.DataFrame( data= cef.matrix, index=cef.row_attr_values[index_ix], columns=cef.col_attr_values[columns_ix])
+
+	cols_annotations = pd.DataFrame(data = cef.col_attr_values,index=cef.col_attr_names, columns=df.index, dtype=object)
+	rows_annotations = pd.DataFrame(data = cef.row_attr_values,index=cef.row_attr_names, columns=df.index, dtype=object)
+
+	headers = dict(zip(cef.header_names, cef.header_values))
+
+	return df, rows_annotations, cols_annotations, headers
+
+def cef2df_simple(filepath):
+	'''Reads a cef file and returns a `data`, pandas dataframe.
+	It dorps the rest information. For all the info use cef2df
+		
+	Inputs
+	------
+
+		filename: str 
+
+	Returns
+	-------
+		dataset: pandas.Dataframe
+			Dataframe containing the data (cef.matrix)
+			`indexes`  will be cef. row_attr_values[index_ix] and `columns` cef.col_attr_values[columns_ix]
+
+	'''
+	try:	
+		import pandas as pd
+	except:
+		print 'To run simple_cef3df you need to have pandas installed. This can be achieve by doing: pip install pandas'
+		return None
+
+	cef = CEF_obj()
+	cef.readCEF(filepath)
+	return pd.DataFrame( data= cef.matrix, index=cef.row_attr_values[0], columns=cef.col_attr_values[0])
 
