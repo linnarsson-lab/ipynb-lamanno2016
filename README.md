@@ -3,10 +3,12 @@ Code, notebook and examples related to La Manno and Gyllborg et al. 2016
 
 ## Requirements
 
-Isntall Anaconda:
+Install Anaconda:
 https://www.continuum.io/downloads
 
 After installation, use the conda update command to update conda: `conda update conda`
+
+To execute the pseudotime analysis R and rpy2 libraries should be installed
 
 ## Get started
 
