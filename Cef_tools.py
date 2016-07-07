@@ -188,7 +188,7 @@ def cef2df(filepath, index_ix=0, columns_ix=0):
 	cef.readCEF(filepath)
 	df = pd.DataFrame( data= cef.matrix, index=cef.row_attr_values[index_ix], columns=cef.col_attr_values[columns_ix])
 
-	cols_annotations = pd.DataFrame(data = cef.col_attr_values,index=cef.col_attr_names, columns=df.index, dtype=object)
+	cols_annotations = pd.DataFrame(data = cef.col_attr_values,index=cef.col_attr_names, columns=df.columns, dtype=object)
 	rows_annotations = pd.DataFrame(data = cef.row_attr_values,index=cef.row_attr_names, columns=df.index, dtype=object)
 
 	headers = dict(zip(cef.header_names, cef.header_values))
