@@ -19,5 +19,5 @@ To execute the pseudotime analysis [R](https://www.r-project.org) and [rpy2](htt
 
 ## Code for R
 
-Code to run and process posterior the Bayesian regression analysis has been ported to R by Satoshi Koyama [skoyama427](https://github.com/skoyama427) and it is available at the following repo: [BayesianGLM](https://github.com/skoyama427/BayesianGLM)
+Code to run  Bayesian regression analysis and process posteriors has been ported to R by Satoshi Koyama [skoyama427](https://github.com/skoyama427) and it is available at the following repo: [BayesianGLM](https://github.com/skoyama427/BayesianGLM)
 
